@@ -1,10 +1,23 @@
 ﻿
 namespace Corlib.Configuration {
     public class TriggerConfig {
-        public TriggerType Type { get; set; }
 
-        public string Trigger { get; set; }
+        public string TriggerFile { get; set; }
 
-        public ProcessConfig Process { get; set; }
+        public ProcessConfig ProcessAction { get; set; }
+
+        public TriggerType GetTriggerType () {
+            if (!string.IsNullOrWhiteSpace (TriggerFile))
+                return TriggerType.File;
+
+            return TriggerType.Undefined;
+        }
+
+        public ActionType GetActionType () {
+            if (null != ProcessAction)
+                return ActionType.Process;
+
+            return ActionType.Undefined;
+        }
     }
 }

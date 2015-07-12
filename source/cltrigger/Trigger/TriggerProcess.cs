@@ -15,12 +15,18 @@ namespace Corlib.Trigger {
             var configuration = await ConfigLoader.LoadDefault (cancellationToken);
 
             Parallel.ForEach (configuration, triggerConfig =>
-                WaitForTriggerFile (triggerConfig, cancellationToken));
+                ProcessConfig (triggerConfig, cancellationToken));
         }
 
-        static async void WaitForTriggerFile (TriggerConfig triggerConfig, CancellationToken cancellationToken) {
+        static async void ProcessConfig (TriggerConfig triggerConfig, CancellationToken cancellationToken) {
             try {
-                await WaitForTriggerFileAsync (triggerConfig, cancellationToken);
+                switch (triggerConfig.GetTriggerType ()) {
+                    case TriggerType.File:
+                        await WaitForTriggerFileAsync (triggerConfig, cancellationToken);
+                        break;
+                    default:
+                        break;
+                }
             }
             catch (OperationCanceledException) {
                 // expected
@@ -28,25 +34,33 @@ namespace Corlib.Trigger {
         }
 
         static async Task WaitForTriggerFileAsync (TriggerConfig triggerConfig, CancellationToken cancellationToken) {
-            using (var watcher = AsyncFileSystemWatcher.File (triggerConfig.Trigger)) {
+            var triggerFile = triggerConfig.TriggerFile;
+            using (var watcher = AsyncFileSystemWatcher.File (triggerFile)) {
                 while (!cancellationToken.IsCancellationRequested) {
 
                     await watcher.WaitForExistanceAsync (cancellationToken);
 
-                    switch (triggerConfig.Type) {
-                        case TriggerType.File:
-                            break;
-                        default:
-                            throw new NotSupportedException ();
-                    }
+                    //TODO: temporary
+                    if (ActionType.Process != triggerConfig.GetActionType ())
+                        return;
 
-                    var process = Process.Start (triggerConfig.Process.ToProcessStartInfo ());
+                    var process = Process.Start (triggerConfig.ProcessAction.ToProcessStartInfo ());
 
-                    await Retry.Action (() => File.Delete (triggerConfig.Trigger), cancellationToken);
+                    await DeleteAsync (triggerFile, cancellationToken);
 
                     await process.WaitForExitAsync (cancellationToken);
                 }
             }
+        }
+
+        static Task DeleteAsync (string fileName, CancellationToken cancellationToken) {
+            return Retry.Action (() => {
+                //TODO: warn if delete is not successful
+                if (!File.Exists (fileName))
+                    return;
+
+                File.Delete (fileName);
+            }, cancellationToken);
         }
     }
 }

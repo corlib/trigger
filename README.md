@@ -13,9 +13,8 @@ Invokes the specified process with the specified arguments.
 ```JSON
 [
   {
-    "type": "file",
-    "trigger": "c:\\notepad.trigger",
-    "process": {
+    "triggerFile": "c:\\notepad.trigger",
+    "processAction": {
       "fileName": "notepad.exe",
       "windowStyle": "minimized"
     }
@@ -25,8 +24,8 @@ Invokes the specified process with the specified arguments.
 
 ## Future direction
 - Additional triggers
-- 	UDP
-- 	authenticated HTTP
+  - UDP
+  - authenticated HTTP
 - Additional actions
--	service operations
--	Windows tasks
+  - Windows service operations
+  - Windows tasks

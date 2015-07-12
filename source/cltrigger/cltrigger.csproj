@@ -56,6 +56,7 @@
   <ItemGroup>
     <Compile Include="Configuration\ProcessConfig.cs" />
     <Compile Include="Configuration\TriggerConfig.cs" />
+    <Compile Include="Configuration\ActionType.cs" />
     <Compile Include="Configuration\TriggerType.cs" />
     <Compile Include="Diagnostics\ProcessExtensions.cs" />
     <Compile Include="IO\FileStreamFactory.cs" />
