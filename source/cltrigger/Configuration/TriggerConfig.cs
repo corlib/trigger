@@ -4,7 +4,7 @@ namespace Corlib.Configuration {
 
         public string TriggerFile { get; set; }
 
-        public ProcessConfig ProcessAction { get; set; }
+        public ProcessAction ProcessAction { get; set; }
 
         public TriggerType GetTriggerType () {
             if (!string.IsNullOrWhiteSpace (TriggerFile))

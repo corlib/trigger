@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics;
 
 namespace Corlib.Configuration {
-    public class ProcessConfig {
+    public class ProcessAction {
         public string FileName { get; set; }
 
         public string Arguments { get; set; }

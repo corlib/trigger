@@ -54,7 +54,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Configuration\ProcessConfig.cs" />
+    <Compile Include="Configuration\ProcessAction.cs" />
     <Compile Include="Configuration\TriggerConfig.cs" />
     <Compile Include="Configuration\ActionType.cs" />
     <Compile Include="Configuration\TriggerType.cs" />
@@ -67,7 +67,7 @@
     <Compile Include="IO\StreamReaderExtensions.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Configuration\ProcessConfigExtensions.cs" />
+    <Compile Include="Configuration\ProcessActionExtensions.cs" />
     <Compile Include="Configuration\ConfigLoader.cs" />
     <Compile Include="Threading\Retry.cs" />
     <Compile Include="Trigger\TriggerProcess.cs" />

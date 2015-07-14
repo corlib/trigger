@@ -1,8 +1,8 @@
 ﻿using System.Diagnostics;
 
 namespace Corlib.Configuration {
-    public static class ProcessConfigExtensions {
-        public static ProcessStartInfo ToProcessStartInfo (this ProcessConfig processConfig) {
+    public static class ProcessActionExtensions {
+        public static ProcessStartInfo ToProcessStartInfo (this ProcessAction processConfig) {
             var result = new ProcessStartInfo (
                 processConfig.FileName, 
                 processConfig.Arguments);

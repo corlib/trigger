@@ -1,15 +1,13 @@
+[![Build status](https://ci.appveyor.com/api/projects/status/3sg6a90yoxj9lwer?svg=true)](https://ci.appveyor.com/project/ConditionalOperator/trigger)
 # Corlib Trigger Service
 A Windows Service that performs actions when triggers are invoked.
 
-## Trigger file
-Similar to the “Folder Actions” feature of OS X. The service monitors for the existence of the file, and invokes the specified action. Subsequent actions are queued if another file is created while the action is executing.
+## Installation
 
-Note: the trigger file is intended to be a zero-byte file specifically created to invoke this trigger action.
+Install the Windows Service
+`cltrigger.exe install`
 
-## Process action
-Invokes the specified process with the specified arguments.
-
-## Example cltrigger.json
+Configure one or more triggers: `cltrigger.json`
 ```JSON
 [
   {
@@ -21,6 +19,23 @@ Invokes the specified process with the specified arguments.
   }
 ]
 ```
+
+## Trigger file
+Similar to the “Folder Actions” feature of OS X. The service monitors for the existence of the file, and invokes the specified action. Subsequent actions are queued if another file is created while the action is executing.
+
+Note: the trigger file is intended to be a zero-byte file specifically created to invoke this trigger action.
+
+## Process action
+Invokes the specified process with the specified arguments.
+
+Options
+- fileName
+- arguments
+- createNoWindow
+- useShellExecute
+- verb
+- WindowStyle
+- workingDirectory
 
 ## Future direction
 - Additional triggers
