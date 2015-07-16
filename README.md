@@ -1,4 +1,4 @@
-[![Build status](https://ci.appveyor.com/api/projects/status/3sg6a90yoxj9lwer?svg=true)](https://ci.appveyor.com/project/ConditionalOperator/trigger) ![Pull requests](http://issuestats.com/github/corlib/trigger/badge/pr?style=flat) ![Issues](http://issuestats.com/github/corlib/trigger/badge/issue?style=flat)
+[![ci](https://ci.appveyor.com/api/projects/status/3sg6a90yoxj9lwer?svg=true)](https://ci.appveyor.com/project/ConditionalOperator/trigger) ![download](https://img.shields.io/github/downloads/corlib/trigger/latest/total.svg?style=flat-square) ![license](https://img.shields.io/github/license/corlib/trigger.svg?style=flat-square) ![pr](http://issuestats.com/github/corlib/trigger/badge/pr?style=flat-square) ![issues](http://issuestats.com/github/corlib/trigger/badge/issue?style=flat-square)
 # Corlib Trigger Service
 A Windows Service that performs actions when triggers are invoked.
 
