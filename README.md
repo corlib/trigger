@@ -20,6 +20,16 @@ Configure one or more triggers: `cltrigger.json`
 ]
 ```
 
+Start the Windows Service
+`NET START CLTRIGGER`
+
+Create the trigger file
+`c:\notepad.trigger`
+
+Notepad should start minimized.
+
+When notepad exists, the `c:\notepad.trigger` file should be automatically deleted.
+
 ## Trigger file
 Similar to the “Folder Actions” feature of OS X. The service monitors for the existence of the file, and invokes the specified action. Subsequent actions are queued if another file is created while the action is executing.
 
