@@ -20,6 +20,8 @@ Configure one or more triggers: `cltrigger.json`
 ]
 ```
 
+## Usage
+
 Start the Windows Service
 `NET START CLTRIGGER`
 
